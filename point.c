@@ -36,6 +36,7 @@ void point_list_add(point_list_t* p_list, point_t point)
 
 void point_list_rm(point_list_t* p_list, uint16_t index)
 {
+  ASSERT(p_list->size > index)
   p_list->points[index] = p_list->points[--p_list->size];
 }
 

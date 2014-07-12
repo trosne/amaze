@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-I. --std=c99
-DEPS=
+DEPS= point.h bmp.h
 
-OBJ = main.o
+OBJ = main.o point.o bmp.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
