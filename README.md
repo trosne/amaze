@@ -1,0 +1,4 @@
+amaze
+=====
+
+Maze generator, linux
