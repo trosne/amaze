@@ -24,6 +24,19 @@ typedef struct
   cell_t *cells;
 } maze_t;
 
+typedef enum
+{
+  DIR_UP,
+  DIR_DOWN,
+  DIR_LEFT,
+  DIR_RIGHT
+} dir_t;
+
+typedef struct
+{
+  uint16_t x, y;
+} point_t;
+
 void print_maze(maze_t* p_maze)
 {
   system("clear");
