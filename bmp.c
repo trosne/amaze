@@ -118,10 +118,9 @@ int write_bmp(const char *filename, int width, int height, char *rgb)
 }
 
 
-void put_pixel(char* rgb, char col)
+void put_pixel(char* rgb, char col, int* index)
 {
-  char* ptr = rgb;
-  *(ptr++) = col;
-  *(ptr++) = col;
-  *(ptr++) = col;
+  rgb[(*index)++] = col;
+  rgb[(*index)++] = col;
+  rgb[(*index)++] = col;
 }
