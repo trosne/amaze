@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I. --std=c99 
+CFLAGS=-I. --std=c99 -Wall
 DEPS= point.h bmp.h
 
 OBJ = main.o point.o bmp.o

@@ -39,7 +39,7 @@ static cell_t* get_cell(maze_t* p_maze, uint16_t x, uint16_t y)
 
 static void store_maze(const char* bmp_file, maze_t* p_maze)
 {
-  char rgb[(2 * p_maze->height + 1) * (2 * p_maze->width + 1) * 3];
+  uint8_t rgb[(2 * p_maze->height + 1) * (2 * p_maze->width + 1) * 3];
   memset(rgb, 0, sizeof(rgb));
 
   uint32_t i = 0;
@@ -93,6 +93,11 @@ static void print_maze(maze_t* p_maze)
   system("clear");
   printf("MAZE: w: %i, h: %i\n", p_maze->width, p_maze->height);
 
+  if (p_maze->width > 80 || p_maze->height > 255)
+  {
+    printf("\tToo big for screen, not printing\n");
+    return;
+  }
 
   for (uint8_t x = 0; x < p_maze->width; ++x)
   {
@@ -180,6 +185,7 @@ static bool is_free(maze_t* p_maze, point_t* p_point, dir_t dir)
     case DIR_RIGHT:
       return !(p_point->x + 1 == p_maze->width || get_cell(p_maze, p_point->x + 1, p_point->y)->value == 1);
   }
+  return false;
 }
 
 
@@ -252,6 +258,7 @@ static point_t get_point(point_t* p_base_point, dir_t dir)
     case DIR_RIGHT:
       return (point_t){p_base_point->x + 1, p_base_point->y};
   }
+  return (point_t){0,0,0};
 }
 
 static void generate_maze_random(maze_t* p_maze)

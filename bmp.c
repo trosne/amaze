@@ -44,7 +44,7 @@ struct BMPHeader
                              are important */
 };
 
-int write_bmp(const uint8_t *filename, int width, int height, uint8_t *rgb)
+int write_bmp(const char *filename, uint16_t width, uint16_t height, uint8_t *rgb)
 {
     int i, j, ipos;
     int bytesPerLine;
