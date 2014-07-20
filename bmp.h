@@ -1,8 +1,13 @@
 #ifndef _BMP_H__
 #define _BMP_H__
 
-void put_pixel(char* rgb, char col, int* index);
+#include <stdint.h>
 
-int write_bmp(const char *filename, int width, int height, char *rgb);
+
+void put_pixel(uint8_t* rgb, uint8_t col, uint32_t* index);
+
+void put_pixel_color(uint8_t* rgb, uint8_t red, uint8_t green, uint8_t blue, uint32_t* index);
+
+int write_bmp(const uint8_t *filename, int width, int height, uint8_t *rgb);
 
 #endif /* _BMP_H__ */

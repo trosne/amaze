@@ -44,7 +44,7 @@ struct BMPHeader
                              are important */
 };
 
-int write_bmp(const char *filename, int width, int height, char *rgb)
+int write_bmp(const uint8_t *filename, int width, int height, uint8_t *rgb)
 {
     int i, j, ipos;
     int bytesPerLine;
@@ -118,9 +118,17 @@ int write_bmp(const char *filename, int width, int height, char *rgb)
 }
 
 
-void put_pixel(char* rgb, char col, int* index)
+void put_pixel(uint8_t* rgb, uint8_t col, uint32_t* index)
 {
   rgb[(*index)++] = col;
   rgb[(*index)++] = col;
   rgb[(*index)++] = col;
 }
+
+void put_pixel_color(uint8_t* rgb, uint8_t red, uint8_t green, uint8_t blue, uint32_t* index)
+{
+  rgb[(*index)++] = red;
+  rgb[(*index)++] = green;
+  rgb[(*index)++] = blue;
+}
+

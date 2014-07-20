@@ -16,6 +16,7 @@
 typedef struct
 {
   uint16_t x, y;
+  uint16_t depth;
 } point_t;
 
 typedef struct
@@ -32,8 +33,11 @@ void point_list_add(point_list_t* p_list, point_t point);
 
 void point_list_rm(point_list_t* p_list, uint16_t index);
 
-point_t point_list_get(point_list_t* p_list, uint16_t index);
+point_t* point_list_get(point_list_t* p_list, uint16_t index);
 
+point_t* point_list_get_deepest(point_list_t* p_list);
+
+point_t* point_list_get_shallowest(point_list_t* p_list);
 
 
 

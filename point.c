@@ -40,9 +40,38 @@ void point_list_rm(point_list_t* p_list, uint16_t index)
   p_list->points[index] = p_list->points[--p_list->size];
 }
 
-point_t point_list_get(point_list_t* p_list, uint16_t index)
+point_t* point_list_get(point_list_t* p_list, uint16_t index)
 {
   ASSERT(p_list->size > index);
-  return p_list->points[index];
+  return &p_list->points[index];
+}
+
+
+point_t* point_list_get_deepest(point_list_t* p_list)
+{
+  point_t* deepest = &p_list->points[0];
+
+  for (uint16_t i = 0; i < p_list->size; ++i)
+  {
+    if (p_list->points[i].depth > deepest->depth)
+    {
+      deepest = &p_list->points[i];
+    }
+  }
+  return deepest;
+}
+
+point_t* point_list_get_shallowest(point_list_t* p_list)
+{
+  point_t* deepest = &p_list->points[0];
+
+  for (uint16_t i = 0; i < p_list->size; ++i)
+  {
+    if (p_list->points[i].depth < deepest->depth)
+    {
+      deepest = &p_list->points[i];
+    }
+  }
+  return deepest;
 }
 

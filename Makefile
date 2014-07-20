@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I. --std=c99
+CFLAGS=-I. --std=c99 
 DEPS= point.h bmp.h
 
 OBJ = main.o point.o bmp.o
@@ -10,7 +10,7 @@ OBJ = main.o point.o bmp.o
 amaze: $(OBJ)
 	gcc -o $@ $^ $(CFLAGS)
 
-.PHONY: clean
+.PHONY: clean ctags tags
 
 clean:  
 	rm -rf *.o amaze
