@@ -58,7 +58,7 @@ static void store_maze(const char* bmp_file, maze_t* p_maze)
 
     put_pixel(rgb, COL_BLOCKED, &i);
     /* print actual rows */
-    for (uint8_t x = 0; x < p_maze->height; ++x)
+    for (uint8_t x = 0; x < p_maze->width; ++x)
     {
       cell_t* c = get_cell(p_maze, x, y);
       if (c->value != 0)
@@ -74,7 +74,7 @@ static void store_maze(const char* bmp_file, maze_t* p_maze)
     }
     put_pixel(rgb, COL_BLOCKED, &i);
     /* print barrier */
-    for (uint8_t x = 0; x < p_maze->height; ++x)
+    for (uint8_t x = 0; x < p_maze->width; ++x)
     {
       cell_t* c = get_cell(p_maze, x, y);
       put_pixel(rgb, (c->y == 0) ? COL_BLOCKED : COL_AVAILABLE, &i);
@@ -84,7 +84,7 @@ static void store_maze(const char* bmp_file, maze_t* p_maze)
 
   }
   printf("Size of array: %i, value of i: %i\n", (int)sizeof(rgb), i);
-  write_bmp(bmp_file, 2 * p_maze->height + 1, 2 * p_maze->width + 1, rgb);
+  write_bmp(bmp_file, 2 * p_maze->width + 1, 2 * p_maze->height + 1, rgb);
 
 }
 
@@ -104,7 +104,7 @@ static void print_maze(maze_t* p_maze)
   {
     printf("O");
     /* print actual rows */
-    for (uint8_t x = 0; x < p_maze->height; ++x)
+    for (uint8_t x = 0; x < p_maze->width; ++x)
     {
       cell_t* c = get_cell(p_maze, x, y);
       if (c->value != 0)
@@ -118,7 +118,7 @@ static void print_maze(maze_t* p_maze)
     }
     printf("\nO");
     /* print barrier */
-    for (uint8_t x = 0; x < p_maze->height; ++x)
+    for (uint8_t x = 0; x < p_maze->width; ++x)
     {
       cell_t* c = get_cell(p_maze, x, y);
       printf((c->y == 0) ? "OO" : " O");
